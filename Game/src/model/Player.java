@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import main.Game;
 import view.Assets;
 
-public class Player extends Entity {
+public class Player extends Creature {
 
 	protected int health;
 	protected int speed;
@@ -15,7 +15,7 @@ public class Player extends Entity {
 	private Game game;
 	
 	public Player(Game game, float x, float y) {
-		super(x, y);
+		super(x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT);
 		this.game = game;
 	}
 
@@ -33,6 +33,6 @@ public class Player extends Entity {
 
 	@Override
 	public void render(Graphics graphics) {
-		graphics.drawImage(Assets.player, (int) x, (int) y, null);
+		graphics.drawImage(Assets.player, (int) x, (int) y, width, height, null);
 	}	
 }
