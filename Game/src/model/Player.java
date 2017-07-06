@@ -8,7 +8,6 @@ import view.Assets;
 public class Player extends Creature {
 
 	protected int health;
-	protected int speed;
 	protected int damage;
 	protected boolean isIA;
 	protected int level; 
@@ -21,14 +20,21 @@ public class Player extends Creature {
 
 	@Override
 	public void tick() {
+		getInput();
+		move();
+	}
+
+	private void getInput() {
+		xMove = 0;
+		yMove = 0;
 		if(game.getKeyManager().up)
-			y -= 3;
+			yMove = -speed;
 		else if(game.getKeyManager().down)
-			y += 3;
+			yMove = speed;
 		else if(game.getKeyManager().left)
-			x -= 3;
+			xMove = -speed;
 		else if(game.getKeyManager().right)
-			x += 3;
+			xMove = speed;
 	}
 
 	@Override
