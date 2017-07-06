@@ -94,6 +94,10 @@ public class Game implements Runnable {
 		stop();
 	}
 	
+	public KeyManager getKeyManager() {
+		return keyManager;
+	}
+	
 	public synchronized void start() {
 		if(running)
 			return;
