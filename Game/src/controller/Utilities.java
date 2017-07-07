@@ -20,12 +20,12 @@ public class Utilities {
 		return builder.toString();
 	}
 	
-	public static int parseInt(String number) {
-		try {
+	public static int parseInt(String number){
+		try{
 			return Integer.parseInt(number);
-		} catch(NumberFormatException e) {
+		}catch(NumberFormatException e){
 			e.printStackTrace();
 			return 0;
 		}
-   	}
+	}
 }

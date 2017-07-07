@@ -43,9 +43,10 @@ public class World {
 		spawnX = Utilities.parseInt(tokens[2]);
 		spawnY = Utilities.parseInt(tokens[3]);
 		tiles = new int[width][height];
-		for(int y = 0; y < height; y++) {
-			for(int x = 0; x < width; x++) {
+		for(int y = 0; y < height; y++){
+			for(int x = 0; x < width; x++){
 				tiles[x][y] = Utilities.parseInt(tokens[(x + y * width) + 4]);
+				System.out.println(tiles[x][y]);
 			}
 		}
 	}
