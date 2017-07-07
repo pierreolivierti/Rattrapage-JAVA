@@ -1,7 +1,5 @@
 package model;
 
-import java.awt.Graphics;
-
 public abstract class Creature extends Entity {
 	public static final int DEFAULT_HEALTH = 80;
 	public static final int DEFAULT_DAMAGE = 40;
