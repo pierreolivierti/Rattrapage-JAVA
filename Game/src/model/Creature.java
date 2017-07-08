@@ -11,6 +11,7 @@ public abstract class Creature extends Entity {
 	protected float xMove;
 	protected float yMove;
 	
+	// Constructor
 	public Creature(float x, float y, int width, int height) {
 		super(x, y, width, height);
 		this.health = DEFAULT_HEALTH;
@@ -19,6 +20,13 @@ public abstract class Creature extends Entity {
 		xMove = 0;
 		yMove = 0;
 	}
+	 
+	public void move() {
+		x += xMove;
+		y += yMove;
+	}
+	
+	// Getters and Setters
 	
 	public float getxMove() {
 		return xMove;
@@ -34,11 +42,6 @@ public abstract class Creature extends Entity {
 
 	public void setyMove(float yMove) {
 		this.yMove = yMove;
-	}
-
-	public void move() {
-		x += xMove;
-		y += yMove;
 	}
 	
 	public int getHealth() {

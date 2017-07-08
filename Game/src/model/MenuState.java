@@ -5,7 +5,8 @@ import java.awt.Graphics;
 import main.Game;
 
 public class MenuState extends State {
-
+	
+	// Constructor
 	public MenuState(Game game) {
 		super(game);
 	}

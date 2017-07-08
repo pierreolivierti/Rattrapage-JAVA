@@ -13,6 +13,7 @@ public class Tile {
 	protected BufferedImage texture;
 	protected final int id;
 	
+	// Constructor
 	public Tile(BufferedImage texture, int id) {
 		this.texture = texture;
 		this.id = id;
@@ -27,10 +28,12 @@ public class Tile {
 		graphics.drawImage(texture, x, y, TILE_WIDTH, TILE_HEIGHT, null);
 	}
 	
+	// Is the tile solid, by default it's false
 	public boolean isSolid() {
 		return false;
 	}
 	
+	// Get the id of the tile
 	public int getId() {
 		return this.id;
 	}

@@ -10,9 +10,12 @@ public abstract class State {
 	private static State currentState = null;
 	protected Game game;	
 	
+	// Constructor
 	public State(Game game) {
 		this.game = game;
 	}
+	
+	// Getters and Setters
 	
 	public static void setState(State state) {
 		currentState = state;

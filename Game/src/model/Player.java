@@ -13,6 +13,7 @@ public class Player extends Creature {
 	protected int level; 
 	private Game game;
 	
+	// Constructor
 	public Player(Game game, float x, float y) {
 		super(x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT);
 		this.game = game;
@@ -24,6 +25,12 @@ public class Player extends Creature {
 		move();
 	}
 
+	@Override
+	public void render(Graphics graphics) {
+		graphics.drawImage(Assets.player, (int) x, (int) y, width, height, null);
+	}
+	
+	// Method that make movements from keyManager state
 	private void getInput() {
 		xMove = 0;
 		yMove = 0;
@@ -36,9 +43,4 @@ public class Player extends Creature {
 		else if(game.getKeyManager().right)
 			xMove = speed;
 	}
-
-	@Override
-	public void render(Graphics graphics) {
-		graphics.drawImage(Assets.player, (int) x, (int) y, width, height, null);
-	}	
 }

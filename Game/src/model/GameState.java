@@ -9,6 +9,7 @@ public class GameState extends State {
 	private Player player;
 	private World world;
 	
+	// Constructor
 	public GameState(Game game) {
 		super(game);
 		player = new Player(game, 100, 100);

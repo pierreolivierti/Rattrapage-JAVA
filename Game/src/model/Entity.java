@@ -18,6 +18,8 @@ public abstract class Entity {
 	public abstract void tick();
 	public abstract void render(Graphics graphics);
 
+	// Getters and Setters
+	
 	public float getX() {
 		return x;
 	}
