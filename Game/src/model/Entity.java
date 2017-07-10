@@ -1,6 +1,8 @@
 package model;
 
 import java.awt.Graphics;
+import java.awt.Rectangle;
+
 import controller.Handler;
 
 public abstract class Entity {
@@ -9,6 +11,7 @@ public abstract class Entity {
 	protected int width;
 	protected int height;
 	protected Handler handler;
+	protected Rectangle bounds;
 	
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.x = x;
@@ -16,6 +19,7 @@ public abstract class Entity {
 		this.width = width;
 		this.height = height;
 		this.handler = handler;
+		bounds = new Rectangle(0, 0, width, height);
 	}
 	
 	public abstract void tick();

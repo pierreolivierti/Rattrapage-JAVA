@@ -1,5 +1,6 @@
 package model;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import controller.Handler;
 import view.Assets;
@@ -16,6 +17,10 @@ public class Player extends Creature {
 	public Player(Handler handler, float x, float y) {
 		super(handler, x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT);
 		this.handler = handler;
+		bounds.x = 4;
+		bounds.y = 34;
+		bounds.width = 60;
+		bounds.height = 30;
 	}
 
 	@Override

@@ -40,6 +40,9 @@ public class World {
 	
 	// Get the tile type thanks to the position
 	public Tile getTile(int x, int y) {
+		if(x < 0 || y < 0 || x > width || y > height) {
+			return Tile.grassTile;
+		}
 		Tile tile = Tile.tiles[tiles[x][y]];
 		if(tile == null) {
 			return Tile.dirtTile;

@@ -24,8 +24,52 @@ public abstract class Creature extends Entity {
 	}
 	 
 	public void move() {
-		x += xMove;
-		y += yMove;
+		moveX();
+		moveY();
+	}
+	
+	public void moveX() {
+		// Right move
+		if(xMove > 0) {				
+			int tx = (int) (x + xMove + bounds.x + bounds.width) / Tile.TILE_WIDTH;
+			
+			if(!collisionTile(tx, (int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
+					!collisionTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) {
+				x += xMove;
+			}
+		// Left move
+		} else if(xMove < 0) {
+			int tx = (int) (x + xMove + bounds.x) / Tile.TILE_WIDTH;
+			
+			if(!collisionTile(tx, (int) (y + bounds.y) / Tile.TILE_HEIGHT) &&
+					!collisionTile(tx, (int) (y + bounds.y + bounds.height) / Tile.TILE_HEIGHT)) {
+				x += xMove;
+			}
+		}
+	}
+	
+	public void moveY() {
+		// Up move
+		if(yMove < 0) {
+			int ty = (int) (y + yMove + bounds.y) / Tile.TILE_HEIGHT;
+			
+			if(!collisionTile((int) (x + bounds.x) / Tile.TILE_WIDTH, ty) &&
+					!collisionTile((int) (x + bounds.x + bounds.width) / Tile.TILE_WIDTH, ty)) {
+				y += yMove;
+			}
+		// Down move
+		} else if(yMove > 0) {
+			int ty = (int) (y + yMove + bounds.y + bounds.height) / Tile.TILE_HEIGHT;
+			
+			if(!collisionTile((int) (x + bounds.x) / Tile.TILE_WIDTH, ty) &&
+					!collisionTile((int) (x + bounds.x + bounds.width) / Tile.TILE_WIDTH, ty)) {
+				y += yMove;
+			}
+		}
+	}
+	
+	protected boolean collisionTile(int x, int y) {
+		return handler.getWorld().getTile(x, y).isSolid();
 	}
 	
 	// Getters and Setters
