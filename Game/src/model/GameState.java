@@ -1,19 +1,19 @@
 package model;
 
 import java.awt.Graphics;
-
-import main.Game;
+import controller.Handler;
+import model.Player;
 
 public class GameState extends State {
 	
 	private Player player;
 	private World world;
 	
-	// Constructor
-	public GameState(Game game) {
-		super(game);
-		player = new Player(game, 100, 100);
-		world = new World("res/world/world.txt");
+	public GameState(Handler handler){
+		super(handler);
+		world = new World(handler, "res/world/world.txt");
+		handler.setWorld(world);
+		player = new Player(handler, 100, 100);
 	}
 	
 	@Override
@@ -26,7 +26,6 @@ public class GameState extends State {
 	public void render(Graphics graphics) {
 		world.render(graphics);
 		player.render(graphics);
-
 	}
 	
 }

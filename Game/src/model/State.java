@@ -2,17 +2,17 @@ package model;
 
 import java.awt.Graphics;
 
-import main.Game;
+import controller.Handler;
 
 public abstract class State {
 	public abstract void tick();
 	public abstract void render(Graphics graphics);
 	private static State currentState = null;
-	protected Game game;	
+	protected Handler handler;	
 	
 	// Constructor
-	public State(Game game) {
-		this.game = game;
+	public State(Handler handler) {
+		this.handler = handler;
 	}
 	
 	// Getters and Setters

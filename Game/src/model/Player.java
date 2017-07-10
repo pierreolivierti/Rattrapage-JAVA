@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Graphics;
 
-import main.Game;
+import controller.Handler;
 import view.Assets;
 
 public class Player extends Creature {
@@ -11,36 +11,35 @@ public class Player extends Creature {
 	protected int damage;
 	protected boolean isIA;
 	protected int level; 
-	private Game game;
+	private Handler handler;
 	
 	// Constructor
-	public Player(Game game, float x, float y) {
-		super(x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT);
-		this.game = game;
+	public Player(Handler handler, float x, float y) {
+		super(handler, x, y, Creature.DEFAULT_WIDTH, Creature.DEFAULT_HEIGHT);
 	}
 
 	@Override
 	public void tick() {
 		getInput();
 		move();
+		handler.getCamera().centerOnEntity(this);
+	}
+	
+	private void getInput(){
+		xMove = 0;
+		yMove = 0;
+		if(handler.getKeyManager().up)
+			yMove = -speed;
+		if(handler.getKeyManager().down)
+			yMove = speed;
+		if(handler.getKeyManager().left)
+			xMove = -speed;
+		if(handler.getKeyManager().right)
+			xMove = speed;
 	}
 
 	@Override
 	public void render(Graphics graphics) {
-		graphics.drawImage(Assets.player, (int) x, (int) y, width, height, null);
-	}
-	
-	// Method that make movements from keyManager state
-	private void getInput() {
-		xMove = 0;
-		yMove = 0;
-		if(game.getKeyManager().up)
-			yMove = -speed;
-		else if(game.getKeyManager().down)
-			yMove = speed;
-		else if(game.getKeyManager().left)
-			xMove = -speed;
-		else if(game.getKeyManager().right)
-			xMove = speed;
+		graphics.drawImage(Assets.player, (int) (x - handler.getCamera().getxOffSet()), (int) (y - handler.getCamera().getyOffSet()), width, height, null);
 	}
 }

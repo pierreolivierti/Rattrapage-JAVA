@@ -1,15 +1,16 @@
 package main;
 
-import view.Assets;
-import view.Window;
-
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import controller.Handler;
 import controller.KeyManager;
 import model.GameState;
 import model.MenuState;
 import model.State;
+import view.Assets;
+import view.Camera;
+import view.Window;
 
 public class Game implements Runnable {
 	private BufferStrategy bs;
@@ -20,8 +21,17 @@ public class Game implements Runnable {
 	private int width;
 	private int height;
 	private boolean running = false;
+	
+	// Input
 	private KeyManager keyManager;
 	
+	//Handler
+	private Handler handler;
+	
+	// Camera 
+	private Camera camera;
+	
+	// States
 	private State gameState;
 	private State menuState;
 
@@ -35,11 +45,13 @@ public class Game implements Runnable {
 	
 	// Initialize a new window
 	private void init() {
-		window = new Window(title, width, height);
+		window = new Window(title, width, height);		// Create the window
 		window.getFrame().addKeyListener(keyManager); 	// Allow us to listen for new user keyboard input
 		Assets.init();									// Creating and cropping our assets
-		gameState = new GameState(this);				// Creating a gameState 
-		menuState = new MenuState(this);				// Creating a menuState
+		camera = new Camera(this, 0,0);					// Creating the game camera
+		handler = new Handler(this);
+		gameState = new GameState(handler);				// Creating a gameState 
+		menuState = new MenuState(handler);				// Creating a menuState
 		State.setState(gameState);						// Setting the state as gameState
 	}
 	
@@ -57,7 +69,7 @@ public class Game implements Runnable {
 			window.getCanvas().createBufferStrategy(3); // If there is no buffer strategy, create one with 3 buffers
 			return;
 		}
-		graphics = bs.getDrawGraphics();				// Get the grahpics from our buffer strategy
+		graphics = bs.getDrawGraphics();				// Get the graphics from our buffer strategy
 		graphics.clearRect(0, 0, width, height);		// Clear the screen
 		if(State.getState() != null) {					// If we are in a known state
 			State.getState().render(graphics);			// Creates graphics with current state render method
@@ -98,8 +110,20 @@ public class Game implements Runnable {
 		stop();
 	}
 	
+	public Camera getCamera() {
+		return camera;
+	}
+	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public int getWidth(){
+		return width;
+	}
+	
+	public int getHeight(){
+		return height;
 	}
 	
 	// Start the game if not always running

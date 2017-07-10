@@ -2,13 +2,17 @@ package model;
 
 import java.awt.Graphics;
 
+import controller.Handler;
+
 public abstract class Entity {
 	protected float x;
 	protected float y;
 	protected int width;
 	protected int height;
+	protected Handler handler;
 	
-	public Entity(float x, float y, int width, int height) {
+	public Entity(Handler handler, float x, float y, int width, int height) {
+		this.handler = handler;
 		this.x = x;
 		this.y = y;
 		this.width = width;
