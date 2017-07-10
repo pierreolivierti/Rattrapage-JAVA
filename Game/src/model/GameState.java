@@ -1,15 +1,16 @@
 package model;
 
 import java.awt.Graphics;
-import controller.Handler;
-import model.Player;
+
+import controller.Handler;;
 
 public class GameState extends State {
 	
 	private Player player;
 	private World world;
 	
-	public GameState(Handler handler){
+	// Constructor
+	public GameState(Handler handler) {
 		super(handler);
 		world = new World(handler, "res/world/world.txt");
 		handler.setWorld(world);
@@ -26,6 +27,7 @@ public class GameState extends State {
 	public void render(Graphics graphics) {
 		world.render(graphics);
 		player.render(graphics);
+
 	}
 	
 }

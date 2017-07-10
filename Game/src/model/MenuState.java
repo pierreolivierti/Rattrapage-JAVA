@@ -2,7 +2,7 @@ package model;
 
 import java.awt.Graphics;
 
-import controller.Handler;
+import controller.Handler;;
 
 public class MenuState extends State {
 	

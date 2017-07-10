@@ -7,12 +7,12 @@ import controller.Utilities;
 import model.Tile;
 
 public class World {
+	private Handler handler;
 	private int width;
 	private int height;
 	private int spawnX;
 	private int spawnY;
 	private int[][] tiles;
-	private Handler handler;
 		
 	// Constructor
 	public World(Handler handler, String path) {
@@ -59,6 +59,7 @@ public class World {
 		for(int y = 0; y < height; y++){
 			for(int x = 0; x < width; x++){
 				tiles[x][y] = Utilities.parseInt(tokens[(x + y * width) + 4]); 	// Get the tile type from the map file
+				System.out.println(tiles[x][y]);
 			}
 		}
 	}

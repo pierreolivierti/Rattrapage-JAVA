@@ -1,7 +1,6 @@
 package model;
 
 import java.awt.Graphics;
-
 import controller.Handler;
 
 public abstract class Entity {
@@ -12,11 +11,11 @@ public abstract class Entity {
 	protected Handler handler;
 	
 	public Entity(Handler handler, float x, float y, int width, int height) {
-		this.handler = handler;
 		this.x = x;
 		this.y = y;
 		this.width = width;
 		this.height = height;
+		this.handler = handler;
 	}
 	
 	public abstract void tick();
