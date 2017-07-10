@@ -6,7 +6,7 @@ import java.awt.image.BufferStrategy;
 import controller.Handler;
 import controller.KeyManager;
 import model.GameState;
-import model.MenuState;
+//import model.MenuState;
 import model.State;
 import view.Assets;
 import view.Camera;
@@ -33,7 +33,7 @@ public class Game implements Runnable {
 	
 	// States
 	private State gameState;
-	private State menuState;
+	//private State menuState;
 
 	// Constructor
 	public Game(String title, int width, int height) {
@@ -48,10 +48,10 @@ public class Game implements Runnable {
 		window = new Window(title, width, height);		// Create the window
 		window.getFrame().addKeyListener(keyManager); 	// Allow us to listen for new user keyboard input
 		Assets.init();									// Creating and cropping our assets
-		camera = new Camera(this, 0,0);					// Creating the game camera
-		handler = new Handler(this);
+		handler = new Handler(this);					// Instantiate our handler
+		camera = new Camera(handler, 0,0);				// Creating the game camera
 		gameState = new GameState(handler);				// Creating a gameState 
-		menuState = new MenuState(handler);				// Creating a menuState
+		//menuState = new MenuState(handler);				// Creating a menuState
 		State.setState(gameState);						// Setting the state as gameState
 	}
 	

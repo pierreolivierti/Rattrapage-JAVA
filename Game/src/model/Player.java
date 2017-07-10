@@ -1,6 +1,5 @@
 package model;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import controller.Handler;
 import view.Assets;
@@ -19,7 +18,7 @@ public class Player extends Creature {
 		this.handler = handler;
 		bounds.x = 4;
 		bounds.y = 34;
-		bounds.width = 60;
+		bounds.width = 52;
 		bounds.height = 30;
 	}
 
@@ -33,6 +32,10 @@ public class Player extends Creature {
 	@Override
 	public void render(Graphics graphics) {
 		graphics.drawImage(Assets.player, (int) (x - handler.getCamera().getxOffSet()), (int) (y - handler.getCamera().getyOffSet()), width, height, null);
+		/*graphics.setColor(Color.red);
+		graphics.fillRect((int) (x + bounds.x - handler.getCamera().getxOffSet()),
+				(int) (y + bounds.y - handler.getCamera().getyOffSet()),
+				bounds.width, bounds.height);*/
 	}
 	
 	// Method that make movements from keyManager state

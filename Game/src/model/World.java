@@ -10,8 +10,8 @@ public class World {
 	private Handler handler;
 	private int width;
 	private int height;
-	private int spawnX;
-	private int spawnY;
+	//private int spawnX;
+	//private int spawnY;
 	private int[][] tiles;
 		
 	// Constructor
@@ -56,8 +56,8 @@ public class World {
 		String[] tokens = file.split("\\s+");									// Remove all spaces
 		width = Utilities.parseInt(tokens[0]);									// Get the width of the map
 		height = Utilities.parseInt(tokens[1]);									// Get the height of the map
-		spawnX = Utilities.parseInt(tokens[2]);									// Get the spawn X of the player
-		spawnY = Utilities.parseInt(tokens[3]);									// Get the spawn Y of the player
+		//spawnX = Utilities.parseInt(tokens[2]);									// Get the spawn X of the player
+		//spawnY = Utilities.parseInt(tokens[3]);									// Get the spawn Y of the player
 		tiles = new int[width][height];
 		for(int y = 0; y < height; y++){
 			for(int x = 0; x < width; x++){
@@ -66,4 +66,22 @@ public class World {
 			}
 		}
 	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+	
 }
