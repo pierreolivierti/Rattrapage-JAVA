@@ -10,6 +10,7 @@ public class Player extends Creature {
 
 	protected int health;
 	protected int damage;
+	protected boolean isIA;
 	protected int level; 
 	private Handler handler;
 	private long lastAttackTimer, attackCooldown = 800, attackTimer = attackCooldown;
@@ -71,7 +72,6 @@ public class Player extends Creature {
 		move();
 		handler.getCamera().centerOnEntity(this);
 		checkAttacks();
-
 	}
 
 	@Override

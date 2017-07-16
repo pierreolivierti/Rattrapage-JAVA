@@ -1,10 +1,12 @@
 package view;
 
 import javax.swing.JFrame;
+
 import java.awt.Canvas;
 import java.awt.Dimension;
 
-public class Window {
+public class Window extends JFrame {
+	private static final long serialVersionUID = 6865118394696166218L;
 	private JFrame frame;
 	private Canvas canvas;
 	private String title;
@@ -22,11 +24,10 @@ public class Window {
 	// Create a window with different params
 	public void createWindow() {
 		frame = new JFrame(title);
-		frame.setSize(width, height); 						  // Window size
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Close button
 		frame.setResizable(false); 							  // Window not resizable
 		frame.setLocationRelativeTo(null); 					  // Display window in center
-		frame.setVisible(true); 							  // Make the window visible
+		frame.setVisible(false); 							  // Make the window visible
 		canvas = new Canvas();
 		canvas.setPreferredSize(new Dimension(width, height)); //////////////////////////////////////////
 		canvas.setMaximumSize(new Dimension(width, height));   // Keep the canvas always the same size //

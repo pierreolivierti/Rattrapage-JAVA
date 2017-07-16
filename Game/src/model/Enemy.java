@@ -40,21 +40,19 @@ public class Enemy extends Creature {
 		xMove = 0;
 		yMove = 0;
 		if(mode == "alea") {
-			x = new Random().nextInt(20);
-			if(x <= 5 && x >= 1){
-			    xMove += 10;
+			x = new Random().nextInt(4);
+			if(x == 0){
+			    xMove = IAspeed;
 			}
-			if(x <= 10 && x >= 6){
-			    xMove += 1;
+			if(x == 1){
+			    xMove = -IAspeed;
 			}
-			if(x <= 15 && x >= 11){
-			    yMove += 10;
+			if(x == 2){
+			    yMove = IAspeed;
 			}
-			if(x <= 20 && x >= 16){
-			    yMove -= 1;
+			if(x == 3){
+			    yMove = -IAspeed;
 			}
-			System.out.println("xMove = " + xMove);
-			System.out.println("yMove = " + yMove);
 		} else if (mode == "intel") {
 			
 		}

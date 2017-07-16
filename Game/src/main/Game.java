@@ -47,6 +47,7 @@ public class Game implements Runnable {
 	private void init() {
 		window = new Window(title, width, height);		// Create the window
 		window.getFrame().addKeyListener(keyManager); 	// Allow us to listen for new user keyboard input
+		window.getFrame().setVisible(true);
 		Assets.init();									// Creating and cropping our assets
 		handler = new Handler(this);					// Instantiate our handler
 		camera = new Camera(handler, 0,0);				// Creating the game camera
