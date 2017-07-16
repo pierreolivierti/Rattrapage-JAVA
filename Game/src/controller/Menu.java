@@ -36,7 +36,7 @@ public class Menu extends JPanel {
 		JLabel texte = new JLabel();
 		JLabel texte2 = new JLabel();
 		texte.setText("Se deplacer avec les fleches.");
-		texte2.setText("W : attaque en haut A : attaque a droite S : attaque en bas D : attaque a droite");
+		texte2.setText("W : attaque en haut - A : attaque a gauche - S : attaque en bas - D : attaque a droite");
 		playButton.addActionListener(new PlayButton(this));
 		exitButton.addActionListener(new ExitButton(this));
 		random.addActionListener(new TickRandom());

@@ -1,7 +1,7 @@
 package model;
 
 import java.awt.Graphics;
-import java.util.Random;
+//import java.util.Random;
 
 import controller.Handler;
 import view.Assets;
@@ -33,6 +33,7 @@ public class Enemy extends Creature {
 	@Override
 	public void die() {
 		System.out.println("Enemy is dead");
+		handler.createEnemy();
 	}
 	
 	// Method that make movements
@@ -40,7 +41,7 @@ public class Enemy extends Creature {
 		xMove = 0;
 		yMove = 0;
 		if(mode == "alea") {
-			x = new Random().nextInt(4);
+			/*x = new Random().nextInt(4);
 			if(x == 0){
 			    xMove = IAspeed;
 			}
@@ -52,7 +53,7 @@ public class Enemy extends Creature {
 			}
 			if(x == 3){
 			    yMove = -IAspeed;
-			}
+			}*/
 		} else if (mode == "intel") {
 			
 		}

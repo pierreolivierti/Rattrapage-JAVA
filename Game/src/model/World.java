@@ -30,6 +30,10 @@ public class World {
 	public void tick() {
 		entityManager.tick();
 	}
+	
+	public void newEnemy(Enemy enemy) {
+		entityManager.addEntity(enemy);
+	}
 
 	public void render(Graphics graphics) {
 		int xStart = (int) Math.max(0, handler.getCamera().getxOffSet() / Tile.TILE_WIDTH);
@@ -85,5 +89,9 @@ public class World {
 	
 	public EntityManager getEntityManager() {
 		return entityManager;
+	}
+	
+	public void setEntityManager(EntityManager entityManager) {
+		this.entityManager = entityManager;
 	}
 }

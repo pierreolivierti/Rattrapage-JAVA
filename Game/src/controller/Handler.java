@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.Random;
+
 import controller.KeyManager;
 import main.Game;
 import model.Enemy;
@@ -32,6 +34,10 @@ public class Handler {
 
 	public void setEnemy(Enemy enemy) {
 		this.enemy = enemy;
+	}
+	
+	public void createEnemy() {
+		this.world.newEnemy(new Enemy(this, new Random().nextInt(900), new Random().nextInt(900)));
 	}
 	
 	public Camera getCamera(){
