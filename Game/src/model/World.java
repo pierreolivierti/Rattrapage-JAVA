@@ -2,6 +2,7 @@ package model;
 
 import java.awt.Graphics;
 
+import controller.EntityManager;
 import controller.Handler;
 import controller.Utilities;
 import model.Tile;
@@ -10,18 +11,24 @@ public class World {
 	private Handler handler;
 	private int width;
 	private int height;
-	//private int spawnX;
-	//private int spawnY;
+	private int spawnX;
+	private int spawnY;
 	private int[][] tiles;
+	private EntityManager entityManager;
+
 		
 	// Constructor
 	public World(Handler handler, String path) {
 		this.handler = handler;
+		entityManager = new EntityManager(handler, new Player(handler, 800, 700));
+		entityManager.addEntity(new Enemy(handler, 800, 800));
 		loadWorld(path);
+		entityManager.getPlayer().setX(spawnX);
+		entityManager.getPlayer().setY(spawnY);
 	}
 	
 	public void tick() {
-		
+		entityManager.tick();
 	}
 
 	public void render(Graphics graphics) {
@@ -36,6 +43,7 @@ public class World {
 						(int) (y * Tile.TILE_HEIGHT - handler.getCamera().getyOffSet()));
 			}
 		}
+		entityManager.render(graphics);
 	}
 	
 	// Get the tile type thanks to the position
@@ -56,8 +64,8 @@ public class World {
 		String[] tokens = file.split("\\s+");									// Remove all spaces
 		width = Utilities.parseInt(tokens[0]);									// Get the width of the map
 		height = Utilities.parseInt(tokens[1]);									// Get the height of the map
-		//spawnX = Utilities.parseInt(tokens[2]);									// Get the spawn X of the player
-		//spawnY = Utilities.parseInt(tokens[3]);									// Get the spawn Y of the player
+		spawnX = Utilities.parseInt(tokens[2]);									// Get the spawn X of the player
+		spawnY = Utilities.parseInt(tokens[3]);									// Get the spawn Y of the player
 		tiles = new int[width][height];
 		for(int y = 0; y < height; y++){
 			for(int x = 0; x < width; x++){
@@ -71,17 +79,11 @@ public class World {
 		return width;
 	}
 
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
 	public int getHeight() {
 		return height;
 	}
-
-	public void setHeight(int height) {
-		this.height = height;
+	
+	public EntityManager getEntityManager() {
+		return entityManager;
 	}
-	
-	
 }

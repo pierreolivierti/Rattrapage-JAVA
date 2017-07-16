@@ -51,10 +51,9 @@ public class Game implements Runnable {
 		handler = new Handler(this);					// Instantiate our handler
 		camera = new Camera(handler, 0,0);				// Creating the game camera
 		gameState = new GameState(handler);				// Creating a gameState 
-		//menuState = new MenuState(handler);				// Creating a menuState
+		//menuState = new MenuState(handler);			// Creating a menuState
 		State.setState(gameState);						// Setting the state as gameState
 	}
-	
 	
 	private void tick() {
 		keyManager.tick();
